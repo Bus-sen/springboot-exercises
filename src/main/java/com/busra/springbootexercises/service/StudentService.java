@@ -1,5 +1,6 @@
 package com.busra.springbootexercises.service;
 
+import com.busra.springbootexercises.model.Book;
 import com.busra.springbootexercises.model.Student;
 import com.busra.springbootexercises.repository.StudentRepository;
 import org.springframework.stereotype.Service;
@@ -14,6 +15,11 @@ public class StudentService {
     }
 
     public void create(Student student) {
+        if (student.getBooks() != null) {   //kitaplara öğrenci bilgisini set ediyoruz
+            for (Book book : student.getBooks()) {
+                book.setStudent(student);
+            }
+        }
         studentRepository.save(student);
     }
 

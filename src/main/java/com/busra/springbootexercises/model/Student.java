@@ -1,7 +1,10 @@
 package com.busra.springbootexercises.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
+
+import java.util.List;
 
 @Entity
 @Getter
@@ -16,4 +19,8 @@ public class Student {
     private String firstName;
     private String lastName;
     private long schoolNumber;
+
+    @OneToMany (mappedBy = "student", cascade = CascadeType.ALL)
+    @JsonManagedReference   //(DTO kullanılmadığında) sonsuz döngüye girmeyi engeller
+    private List<Book> books;
 }
