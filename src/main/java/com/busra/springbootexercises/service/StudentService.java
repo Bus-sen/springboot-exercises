@@ -46,4 +46,12 @@ public class StudentService {
             throw new RuntimeException("Student with id " + id + " does not exist");
         }
     }
+
+    public List<Student> findByFirstName(String firstName) {
+        return studentRepository.findByFirstNameContaining(firstName);
+    }
+
+    public Student findBySchoolNumber(long schoolNumber) {
+        return studentRepository.findBySchoolNumber(schoolNumber);
+    }
 }
