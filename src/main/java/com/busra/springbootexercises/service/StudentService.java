@@ -26,4 +26,24 @@ public class StudentService {
     public List<Student> getStudents(){
         return studentRepository.findAll();
     }
+
+    public void delete (long id) {
+        if (studentRepository.existsById(id)) {
+            studentRepository.deleteById(id);
+        } else {
+            throw new RuntimeException("Student with id " + id + " does not exist");
+        }
+    }
+
+    public Student update(long id, Student student) {
+        if (studentRepository.existsById(id)) {
+            Student updatedStudent = studentRepository.findById(id).get();
+            updatedStudent.setFirstName(student.getFirstName());
+            updatedStudent.setLastName(student.getLastName());
+            updatedStudent.setSchoolNumber(student.getSchoolNumber());
+            return studentRepository.save(updatedStudent);
+        } else {
+            throw new RuntimeException("Student with id " + id + " does not exist");
+        }
+    }
 }
