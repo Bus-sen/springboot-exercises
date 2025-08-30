@@ -54,4 +54,20 @@ public class StudentService {
     public Student findBySchoolNumber(long schoolNumber) {
         return studentRepository.findBySchoolNumber(schoolNumber);
     }
+
+    public List<Student> findByFirstNameJPQL(String firstName) {
+        return studentRepository.findByFirstNameJPQL(firstName);
+    }
+
+    public Student findBySchoolNumberJPQL(long schoolNumber) {
+        return studentRepository.findBySchoolNumberJPQL(schoolNumber);
+    }
+
+    public List<Student> findByFirstNameNative(String firstName) {
+        return studentRepository.findByFirstNameNative(firstName);
+    }
+
+    public Student findBySchoolNumberNative(long schoolNumber) {
+        return studentRepository.findBySchoolNumberNative(schoolNumber);
+    }
 }

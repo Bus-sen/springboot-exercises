@@ -43,4 +43,25 @@ public class StudentController {
     public Student findBySchoolNumber(@PathVariable long schoolNumber){
         return studentService.findBySchoolNumber(schoolNumber);
     }
+
+    @GetMapping("/search/jpql/name/{firstName}")
+    public List<Student> findByFirstNameJPQL(@PathVariable String firstName){
+        return studentService.findByFirstNameJPQL(firstName);
+    }
+
+    @GetMapping("/search/jpql/number/{schoolNumber}")
+    public Student findBySchoolNumberJPQL(@PathVariable long schoolNumber){
+        return studentService.findBySchoolNumberJPQL(schoolNumber);
+    }
+
+    @GetMapping("/search/native/name/{firstName}")
+    public List<Student> findByFirstNameNative(@PathVariable String firstName){
+        return studentService.findByFirstNameNative(firstName);
+    }
+
+    @GetMapping("/search/native/number/{schoolNumber}")
+    public Student findBySchoolNumberNative(@PathVariable long schoolNumber){
+        return studentService.findBySchoolNumberNative(schoolNumber);
+    }
+
 }
