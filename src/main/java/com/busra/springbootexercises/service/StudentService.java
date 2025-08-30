@@ -3,6 +3,8 @@ package com.busra.springbootexercises.service;
 import com.busra.springbootexercises.model.Book;
 import com.busra.springbootexercises.model.Student;
 import com.busra.springbootexercises.repository.StudentRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -46,9 +48,13 @@ public class StudentService {
             throw new RuntimeException("Student with id " + id + " does not exist");
         }
     }
-
+/*
     public List<Student> findByFirstName(String firstName) {
         return studentRepository.findByFirstNameContaining(firstName);
+    }
+*/
+    public Page<Student> findByFirstNameContaining(String firstName, Pageable pageable) {
+        return studentRepository.findByFirstNameContaining(firstName, pageable);
     }
 
     public Student findBySchoolNumber(long schoolNumber) {

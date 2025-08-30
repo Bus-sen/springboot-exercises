@@ -2,6 +2,8 @@ package com.busra.springbootexercises.controller;
 
 import com.busra.springbootexercises.model.Student;
 import com.busra.springbootexercises.service.StudentService;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -33,10 +35,15 @@ public class StudentController {
     public Student update(@PathVariable long id, @RequestBody Student student){
         return studentService.update(id, student);
     }
-
+/*
     @GetMapping("/search/name/{firstName}")
     public List<Student> findByFirstName(@PathVariable String firstName){
         return studentService.findByFirstName(firstName);
+    }
+*/
+    @GetMapping("/search")
+    public Page<Student> findByFirstNameContaining(@RequestParam String firstName, Pageable pageable) {
+        return studentService.findByFirstNameContaining(firstName, pageable);
     }
 
     @GetMapping("/search/number/{schoolNumber}")

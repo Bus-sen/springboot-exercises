@@ -1,6 +1,8 @@
 package com.busra.springbootexercises.repository;
 
 import com.busra.springbootexercises.model.Student;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -10,7 +12,8 @@ import java.util.List;
 
 @Repository
 public interface StudentRepository extends JpaRepository<Student,Long> {
-    List<Student> findByFirstNameContaining(String firstName);
+    //List<Student> findByFirstNameContaining(String firstName);
+    Page<Student> findByFirstNameContaining(String firstName, Pageable pageable);
     Student findBySchoolNumber(long schoolNumber);
 
     // JPQL ile firstName’e göre öğrenci arama
